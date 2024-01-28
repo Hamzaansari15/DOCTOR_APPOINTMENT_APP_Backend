@@ -25,6 +25,18 @@ const doctorSchema = new Schema(
             type: Number,
             required: [true, 'Phone Number is Required'],
             unique: true
-        }
+        },
+        emergencyPhoneNumber: {
+            type: Number,
+            unique: true,
+        },
+        email: {
+            type: String,
+            unique: true,
+            trim: true,
+            required: true,
+            lowerCase: true
+        },
+
 
     }, { timestamps: true })

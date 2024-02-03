@@ -37,6 +37,21 @@ const doctorSchema = new Schema(
             required: true,
             lowerCase: true
         },
+        medical_license_number: {
+            type: String,
+            trim: true,
+            unique: true,
+            required: true
+        },
+        speciality: {
+            type: String,
+            required: true,
+        },
+        medical_school_name: {
+            type: String,
+            required: true,
+        },
+        
 
 
     }, { timestamps: true })

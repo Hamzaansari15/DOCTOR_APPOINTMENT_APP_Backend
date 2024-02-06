@@ -36,10 +36,18 @@ const userSchema = new Schema(
         gender: {
             type: String,
             required: true,
-            enum: ['Male', 'Female', 'Custom'],
+            enum: ['male', 'female'],
         },
         address: {
             type: String
+        },
+        city: {
+            type: String,
+            required: true
+        },
+        country: {
+            type: String,
+            required: true
         },
         occupation: {
             type: String

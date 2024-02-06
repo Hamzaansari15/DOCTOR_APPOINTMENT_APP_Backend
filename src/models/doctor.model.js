@@ -1,6 +1,21 @@
 import mongoose, { Schema } from "mongoose";
 
 
+const workHistory = new Schema({
+    workPlaceName: {
+        type: String,
+        required: true,
+    },
+    from: {
+        type: Date,
+        required: true
+    },
+    to: {
+        type: String,
+        required: true
+    }
+})
+
 const doctorSchema = new Schema(
     {
         profileImage: {
@@ -21,6 +36,18 @@ const doctorSchema = new Schema(
             enum: ['male', 'female'],
             required: true
         },
+        address: {
+            type: String,
+            required: true
+        },
+        city: {
+            type: String,
+            required: true
+        },
+        country: {
+            type: String,
+            required: true
+        },
         phoneNumber: {
             type: Number,
             required: [true, 'Phone Number is Required'],
@@ -37,7 +64,7 @@ const doctorSchema = new Schema(
             required: true,
             lowerCase: true
         },
-        medical_license_number: {
+        medicalLicenseNumber: {
             type: String,
             trim: true,
             unique: true,
@@ -47,11 +74,34 @@ const doctorSchema = new Schema(
             type: String,
             required: true,
         },
-        medical_school_name: {
+        medicalSchoolName: {
             type: String,
             required: true,
         },
-        
+        graduationYear: {
+            type: Date,
+            required: true
+        },
+        workHistory: {
+            type: [workHistory]
+        },
+        document: {
+            type: [String],
+        },
+        status: {
+            type: String,
+            enum: ['approved', 'pending', 'block'],
+        },
+        refreshToken: {
+            type: String,
+        },
+        appointmentFee: {
+            type: Number,
+            required: true
+        }
 
 
     }, { timestamps: true })
+
+
+export const Doctor = mongoose.model('Doctor', doctorSchema);

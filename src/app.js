@@ -9,11 +9,6 @@ app.use(express.json({ limit: process.env.DATA_LIMIT }));
 app.use(express.static('public/image'));
 app.use(urlencoded({ extended: true, limit: process.env.DATA_LIMIT }));
 
-//
-
-
-
-
 
 
 export { app }

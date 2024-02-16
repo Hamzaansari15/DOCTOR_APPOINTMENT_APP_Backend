@@ -10,5 +10,12 @@ app.use(express.static('public/image'));
 app.use(urlencoded({ extended: true, limit: process.env.DATA_LIMIT }));
 
 
+//  ROUTES IMPORT
+
+import userRouter from './routes/member.route.js';
+
+//  ROUTES  DECLARATION
+app.use('/api/v1/member', userRouter);
+
 
 export { app }

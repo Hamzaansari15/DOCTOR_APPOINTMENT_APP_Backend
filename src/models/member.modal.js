@@ -14,6 +14,7 @@ const memberSchema = new Schema({
         required: true,
         lowerCase: true,
         trim: true,
+        unique: true
     },
     password: {
         type: String,
@@ -21,7 +22,8 @@ const memberSchema = new Schema({
     },
     phoneNumber: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     accountType: {
         type: String,
@@ -32,6 +34,9 @@ const memberSchema = new Schema({
         type: String,
         enum: ['incomplete', 'pending', 'complete'],
         default: 'incomplete'
+    },
+    refreshToken: {
+        type: String,
     }
 }, { timestamps: true })
 
@@ -46,12 +51,11 @@ memberSchema.methods.comparePassword = async function (password) {
     return await bcrypt.compare(password, this.password);
 }
 
-
 memberSchema.methods.generateRefreshToken = function () {
     return jwt.sign(
         { _id: this._id },
         process.env.REFRESH_TOKEN_SECRET,
-        { expiresIn: process.env.REFRESH_TOKENEXPIRY }
+        { expiresIn: process.env.REFRESH_TOKEN_EXPIRY }
     );
 };
 

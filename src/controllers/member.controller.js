@@ -46,6 +46,6 @@ const registerMember = asyncHandler(async (req, res, next) => {
 })
 
 
-// export {
-//     registerMember
-// }
+export {
+    registerMember
+}
